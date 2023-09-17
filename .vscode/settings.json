@@ -66,5 +66,6 @@
         "variant": "cpp",
         "set": "cpp",
         "unordered_set": "cpp"
-    }
+    },
+    "cmake.configureOnOpen": true
 }

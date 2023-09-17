@@ -2,21 +2,11 @@
     "tasks": [
         {
             "type": "cppbuild",
-            "label": "C/C++: g++ build active file",
-            "command": "/usr/bin/g++",
+            "label": "C/C++: make build active file",
+            "command": "/usr/bin/make",
             "args": [
-                
-                "-fdiagnostics-color=always",
-                "-g",
-                "${workspaceFolder}/*.cpp",
-                "-o",
-                "${fileDirname}/${fileBasenameNoExtension}",
-                "-lGLEW",
-                "-lEGL",
-                "-lGL",
-                "-lGLU",
-                "-lOpenGL",
-                "-lglfw",
+                "fresh"
+
             ],
             "options": {
                 "cwd": "${fileDirname}"
