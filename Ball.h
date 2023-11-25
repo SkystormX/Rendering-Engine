@@ -68,6 +68,7 @@ glm::ivec3 HSLtoRGB(float h, float s, float l) {
 }
 class Ball : public Entity{
 public:
+    double mass;
     glm::dvec2 pos, vel; 
     glm::ivec3 color;
     double radius;
@@ -76,23 +77,48 @@ public:
         pos = {0,0};
         vel = {0,0};
         radius = 15;  
-        lifespan = 3;
+        lifespan = 60;
+
+        // acceleration = {0,0};
     }
 
+
     void Tick(double dt){
+
+        for (Entity* p : entity_pointers) {
+            Ball* ball = dynamic_cast<Ball*>(p);
+            if (!ball || ball == this){
+                continue;
+            }
+
+            double dist = glm::length(ball->pos - pos);
+            if (dist <= (ball->radius + radius)){
+
+            
+               
+                cout << "im a retard" << endl;
+            }
+        }
+
+
         if (pos.x > WINDOW_WIDTH+(2*radius)){
-            pos.x=-(2*radius);
+            //pos.x=-(2*radius);
+            vel.x=-vel.x;
         }
         if (pos.x < -(2*radius)){
-            pos.x=WINDOW_WIDTH+(2*radius);
+            //pos.x=WINDOW_WIDTH+(2*radius);
+            vel.x=-vel.x;
         }
 
         if (pos.y > WINDOW_HEIGHT+(2*radius)){
-            pos.y=-(2*radius);
+            //pos.y=-(2*radius);
+            vel.y=-vel.y;
         }
         if (pos.y < -(2*radius)){
-            pos.y=WINDOW_HEIGHT+(2*radius);
-        }        
+            //pos.y=WINDOW_HEIGHT+(2*radius);
+            vel.y=-vel.y;
+        }
+        // vel += acceleration * dt;
         pos += vel*dt;
         double hue = fmod(glfwGetTime()*36, 360);
         color = HSLtoRGB (hue,0.5,0.5);

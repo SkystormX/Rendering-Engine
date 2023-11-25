@@ -32,22 +32,22 @@ public:
         return glm::dvec2(sin(theta*(PI/180)),cos(theta*(PI/180)));
     }
 
-
+    Ball* ball;
     void Tick(double dt){
 
-        if (pos.x > WINDOW_WIDTH+50){
-            pos.x=-50;
-        }
-        if (pos.x < -50){
-            pos.x=WINDOW_WIDTH+50;
-        }
+        // if (pos.x > WINDOW_WIDTH+50){
+        //     pos.x=-50;
+        // }
+        // if (pos.x < -50){
+        //     pos.x=WINDOW_WIDTH+50;
+        // }
 
-        if (pos.y > WINDOW_HEIGHT+25){
-            pos.y=-25;
-        }
-        if (pos.y < -25){
-            pos.y=WINDOW_HEIGHT+25;
-        }
+        // if (pos.y > WINDOW_HEIGHT+25){
+        //     pos.y=-25;
+        // }
+        // if (pos.y < -25){
+        //     pos.y=WINDOW_HEIGHT+25;
+        // }
 
 
         if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS){
@@ -67,15 +67,16 @@ public:
             pos -= velocity*GetForwardVector()*dt;
         }
         
-        if (glfwGetKey(window, GLFW_KEY_X) == GLFW_PRESS){
+        if (glfwGetKey(window, GLFW_KEY_V) == GLFW_PRESS){
             if ((glfwGetTime()-last_ball_time) > 1){
                 last_ball_time = glfwGetTime();
                 cout << "Test" << endl;
                 Ball* b = new Ball();
                 b->color = {255,0,0};
                 b->pos = pos;
-                b->vel = 1000.0*GetForwardVector();
+                b->vel = 100.0*GetForwardVector();
                 entity_pointers.push_back(b);
+
 
             }
 
