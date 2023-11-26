@@ -96,7 +96,7 @@ public:
 
             
                
-                cout << "im a retard" << endl;
+                cout << "beep" << endl;
             }
         }
 
